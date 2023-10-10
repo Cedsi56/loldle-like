@@ -1,0 +1,29 @@
+@keyframes rotate {
+  0% {
+    transform: rotate3d(0, 1, 0, 0turn);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 0.5turn);
+  }
+}
+
+.box {
+  width: 5rem;
+  height: 6rem;
+  animation: 0.7s ease-in rotate forwards;
+  position: relative;
+  transform-style: preserve-3d;
+  &__front {
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+  }
+  &__back {
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(-1px);
+  }
+}
