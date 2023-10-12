@@ -84,7 +84,7 @@ export default function Home() {
               />
             </div>
             <div className="line">
-                <a>"{lineOfTheDay.text}"</a>
+                <a>&quot;{lineOfTheDay.text}&quot;</a>
                 <MuiAudioPlayer id="inline-timeline" display="timeline" containerWidth={300} inline src={`/sound/${lineOfTheDay.audio}`} />
             </div>
             <div className='container'>
