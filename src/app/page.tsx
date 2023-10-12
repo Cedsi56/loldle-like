@@ -7,7 +7,7 @@ import {Line, lines} from '@/data/lines';
 import {useState} from "react";
 import {GoodOrBad} from "@/components/GoodOrBad";
 
-let lineIdOfTheDay = Math.floor(new Date().getTime() / 86400000) % 7
+let lineIdOfTheDay = Math.floor(new Date().getTime() / 86400000) + 1 % 7
 let lineOfTheDay = lines[lineIdOfTheDay]
 if (typeof window !== 'undefined') {
   localStorage.setItem("answers", "[]");
