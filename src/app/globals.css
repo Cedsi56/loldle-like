@@ -1,3 +1,151 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+span {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  transform: scaleX(-1);
+  font-size: 16px;
+  font-family: Friz Quadrata Std,Mobilo,Helvetica,Arial;
+}
+
+.MuiSlider-root {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  transform: scaleX(1);
+  font-size: 16px;
+  font-family: Friz Quadrata Std,Mobilo,Helvetica,Arial;
+}
+
+.MuiPaper-root {
+  background-color: #1e2328 !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.ozheaders > div {
+  float: left;
+  width: 5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  align-items:center;
+  flex-direction: column;
+}
+
+.ozheaders > div > div {
+  margin: auto;
+}
+
+a {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+hr {
+  width:5rem;
+  border-left:none;
+  border-top:none;
+  border-right:none;
+  border-bottom:3px solid white;
+  margin-top: 1rem;
+}
+
+.thmbnail {
+  display: flex;
+}
+
+.thmbnail > img {
+  align-self: center;
+}
+
+html {
+  background:url(background.png) no-repeat 50% fixed;
+  background-size:cover;
+  background-color:#000;
+  color: white;
+}
+
+.line {
+  display:flex;
+  flex-direction:column;
+  row-gap:1rem;
+  border:2px solid #af9767;
+  border-radius:8px;
+  background:#1e2328;
+  font-size:1rem;
+  padding:1rem 2rem;
+  vertical-align:center;
+  align-content:center;
+  justify-self:center;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  color: white;
+}
+
+.completebox {
+  display:flex;
+  flex-direction:column;
+  row-gap:1rem;
+  border:2px solid #af97ff;
+  border-radius:8px;
+  background:#fefefe;
+  font-size:1rem;
+  padding:1rem 2rem;
+  vertical-align:center;
+  align-content:center;
+  justify-self:center;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  background:#fefefe;
+  color: black;
+}
+
+.guessBtn {
+  background-color: #af97ff;
+  transition: none;
+}
+
+.guessBtn:hover {
+  background-color: #ff97ff;
+}
+
+.windiv {
+  margin-top: 2rem;
+  display:none;
+  flex-direction:column;
+  border:2px solid #af9767;
+  border-radius:8px;
+  background:#1e2328;
+  font-size:1rem;
+  padding:1rem 2rem;
+  vertical-align:center;
+  align-content:center;
+  justify-self:center;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  color: white;
+}
+
+.header {
+  margin-bottom: 1rem;
+}

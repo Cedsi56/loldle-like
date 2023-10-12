@@ -1,12 +1,54 @@
 'use client'
 import Image from 'next/image'
-import {Autocomplete, Box, TextField} from '@mui/material'
+import {Autocomplete, Box, TextField, Button} from '@mui/material'
+import SendIcon from '@mui/icons-material/Send';
 import {Video, videos} from '@/data/videos';
 import {Line, lines} from '@/data/lines';
 import {useState} from "react";
 import {GoodOrBad} from "@/components/GoodOrBad";
+import MuiAudioPlayer from 'mui-audio-player-plus';
 
-const lineOfTheDay = lines[0]
+let lineIdOfTheDay = Math.floor(new Date().getTime() / 86400000) % 7
+let lineOfTheDay = lines[lineIdOfTheDay]
+if (typeof window !== 'undefined') {
+  localStorage.setItem("answers", "[]");
+}
+
+export function doWin(nb: number) {
+  let div = document.getElementsByClassName("windiv")[0];
+  div.setAttribute("style", "display:flex");
+
+  let ls:string|null = localStorage.getItem("answers")
+  let lsactual:string;
+  if (ls == null){
+      lsactual = "[]";
+  } else {
+      lsactual = ls;
+  }
+  let curr = JSON.parse(lsactual);
+
+  let text:string = `<p>I found today's Ozludle in ${nb + 1} shots<p>`
+  text += "\n"
+
+  curr.forEach((arr:string[]) => {
+    text += "<p>";
+    arr.forEach((color:string) => {
+      if (color == "red") {
+        text += "🟥"
+      } else if (color == "green") {
+        text += "🟩"
+      } else if (color == "yellow-over") {
+        text += "⬆️"
+      } else {
+        text += "⬇️"
+      }
+    })
+    text + "</p>\n"
+  })
+
+  div.innerHTML = text;
+  console.log(div);
+}
 
 export default function Home() {
     const [video, setVideo] = useState<Video | null>(null);
@@ -31,16 +73,27 @@ export default function Home() {
     }
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div>
-                <a>{lineOfTheDay.text}</a>
+        <main className="flex min-h-screen flex-col items-center space-around p-24">
+            <div className='header'>
+              <Image
+                  className='img'
+                  src={`/image/ozludle2.png`}
+                  width={300}
+                  height={122}
+                  alt="Video thumbnail"
+              />
             </div>
-            <div>
+            <div className="line">
+                <a>"{lineOfTheDay.text}"</a>
+                <MuiAudioPlayer id="inline-timeline" display="timeline" containerWidth={300} inline src={`/sound/${lineOfTheDay.audio}`} />
+            </div>
+            <div className='container'>
                 <Autocomplete
+                    className='completebox'
                     disablePortal
                     options={videos}
                     getOptionLabel={(option) => option.name}
-                    sx={{width: 300}}
+                    sx={{width: 425}}
                     onChange={(event, value) => setVideo(value)}
                     renderOption={(props, option) => (
                         <Box component="li" sx={{'& > img': {mr: 2, flexShrink: 0}}} {...props}>
@@ -49,21 +102,64 @@ export default function Home() {
                                 src={`/image/${option.thumbnail}`}
                                 width={32}
                                 height={32}
-                                alt="Picture of the author"
+                                alt="Video thumbnail"
                             />
                             {option.name}
                         </Box>
                     )}
                     renderInput={(params) =>
-                        <TextField {...params} label="Video"/>
+                        <TextField {...params} label="Video" style={{color:'white'}}/>
                     }
                 />
-                <button onClick={() => handleOnClick()}>Guess</button>
+                <Button sx={{backgroundColor:'#af97ff'}} className='guessBtn' variant="contained" endIcon={<SendIcon />} onClick={() => handleOnClick()}>Guess</Button>
 
-                <div className="flex flex-col gap-4">
-                    {fails.map((fail) => {
-                        return <GoodOrBad key={fail.id} line={fail.line} videoSelect={fail.videoSelect}/>
-                    })}
+                <div>
+
+                  <div className='flex flex-line gap-2 ozheaders'>
+                    <div className="flex">
+                      <div>
+                        <a>Thumbnail</a>
+                      </div>
+                      <hr/>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <a>Champion</a>
+                      </div>
+                      <hr/>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <a>Video type</a>
+                      </div>
+                      <hr/>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <a>Has winscreen</a>
+                      </div>
+                      <hr/>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <a>Rating</a>
+                      </div>
+                      <hr/>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <a>Release year</a>
+                      </div>
+                      <hr/>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-5">
+                      {fails.map((fail) => {
+                          return <GoodOrBad key={fail.id} numid={fail.id} line={fail.line} videoSelect={fail.videoSelect}/>
+                      })}
+                  </div>
+                  <div className="windiv"></div>
                 </div>
             </div>
         </main>
