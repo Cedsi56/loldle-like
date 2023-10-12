@@ -48,6 +48,12 @@ export default function Home() {
             </div>
             <div className="line">
                 <a>&quot;{lineOfTheDay.text}&quot;</a>
+                <audio
+                    controls
+                    src={`/sound/${lineOfTheDay.audio}`}>
+                        Your browser does not support the
+                        <code>audio</code> element.
+                </audio>
             </div>
             <div className='container'>
                 <Autocomplete
