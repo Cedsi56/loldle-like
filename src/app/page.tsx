@@ -14,42 +14,6 @@ if (typeof window !== 'undefined') {
   localStorage.setItem("answers", "[]");
 }
 
-export function doWin(nb: number) {
-  let div = document.getElementsByClassName("windiv")[0];
-  div.setAttribute("style", "display:flex");
-
-  let ls:string|null = localStorage.getItem("answers")
-  let lsactual:string;
-  if (ls == null){
-      lsactual = "[]";
-  } else {
-      lsactual = ls;
-  }
-  let curr = JSON.parse(lsactual);
-
-  let text:string = `<p>I found today's Ozludle in ${nb + 1} shots<p>`
-  text += "\n"
-
-  curr.forEach((arr:string[]) => {
-    text += "<p>";
-    arr.forEach((color:string) => {
-      if (color == "red") {
-        text += "🟥"
-      } else if (color == "green") {
-        text += "🟩"
-      } else if (color == "yellow-over") {
-        text += "⬆️"
-      } else {
-        text += "⬇️"
-      }
-    })
-    text + "</p>\n"
-  })
-
-  div.innerHTML = text;
-  console.log(div);
-}
-
 export default function Home() {
     const [video, setVideo] = useState<Video | null>(null);
     const [failId, setFailId] = useState(0);

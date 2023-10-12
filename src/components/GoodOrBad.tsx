@@ -2,7 +2,6 @@ import {Card} from "@/components/Card";
 import {Line} from "@/data/lines";
 import {Video, videos} from "@/data/videos";
 import Image from 'next/image'
-import {doWin} from '@/app/page'
 
 type Props = {
     key: number,
@@ -110,3 +109,39 @@ export const GoodOrBad = (prop: Props) => {
         </Card>
     </div>
 }
+
+function doWin(nb: number) {
+    let div = document.getElementsByClassName("windiv")[0];
+    div.setAttribute("style", "display:flex");
+  
+    let ls:string|null = localStorage.getItem("answers")
+    let lsactual:string;
+    if (ls == null){
+        lsactual = "[]";
+    } else {
+        lsactual = ls;
+    }
+    let curr = JSON.parse(lsactual);
+  
+    let text:string = `<p>I found today's Ozludle in ${nb + 1} shots<p>`
+    text += "\n"
+  
+    curr.forEach((arr:string[]) => {
+      text += "<p>";
+      arr.forEach((color:string) => {
+        if (color == "red") {
+          text += "🟥"
+        } else if (color == "green") {
+          text += "🟩"
+        } else if (color == "yellow-over") {
+          text += "⬆️"
+        } else {
+          text += "⬇️"
+        }
+      })
+      text + "</p>\n"
+    })
+  
+    div.innerHTML = text;
+    console.log(div);
+  }
