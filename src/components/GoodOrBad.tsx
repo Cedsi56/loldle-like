@@ -42,8 +42,9 @@ export const GoodOrBad = (prop: Props) => {
             if (JSON.stringify(v.champion) == JSON.stringify(prop.videoSelect.champion)){
                 colors.push("green");
             } else {
+                let vidDefined:Video = v;
                 let isFound = v.champion.some( champ => prop.videoSelect.champion.includes(champ))
-                || prop.videoSelect.champion.some( champ => v.champion.includes(champ));
+                || prop.videoSelect.champion.some( champ => vidDefined.champion.includes(champ));
                 if (isFound) {
                     colors.push("yellow");
                 } else {
