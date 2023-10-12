@@ -6,7 +6,6 @@ import {Video, videos} from '@/data/videos';
 import {Line, lines} from '@/data/lines';
 import {useState} from "react";
 import {GoodOrBad} from "@/components/GoodOrBad";
-import MuiAudioPlayer from 'mui-audio-player-plus';
 
 let lineIdOfTheDay = Math.floor(new Date().getTime() / 86400000) % 7
 let lineOfTheDay = lines[lineIdOfTheDay]
@@ -49,7 +48,6 @@ export default function Home() {
             </div>
             <div className="line">
                 <a>&quot;{lineOfTheDay.text}&quot;</a>
-                <MuiAudioPlayer id="inline-timeline" display="timeline" containerWidth={300} inline src={`/sound/${lineOfTheDay.audio}`} />
             </div>
             <div className='container'>
                 <Autocomplete
