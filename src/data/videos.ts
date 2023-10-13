@@ -228,17 +228,17 @@ export const videos: Video[] = [
         year : 2021,
         winscreen : true,
         rating : 2.4,
-        type: "Other"
+        type: "AP Offmeta"
     },
     {
         id : 1003.2,
         name : "galeforce alistar.",
         thumbnail : "galeforcealistar.jpg",
-        champion : ["Xin Zhao"],
+        champion : ["Alistar"],
         year : 2021,
         winscreen : true,
         rating : 3,
-        type: "Other"
+        type: "AD Offmeta"
     },
     {
         id : 1004,
