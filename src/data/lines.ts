@@ -50,4 +50,10 @@ export const lines: Line[] = [
         audio : "touchgrass.mp3",
         video : 1003
     },
+    {
+        id : 8,
+        text : "Get off my control ward, I'll 1v2 you for that control ward",
+        audio : "controlward.mp3",
+        video : 1003.2
+    },
 ]
