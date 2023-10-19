@@ -124,11 +124,11 @@ function doWin(nb: number) {
     }
     let curr = JSON.parse(lsactual);
   
-    let text:string = `<p>I found today's Ozludle in ${nb + 1} shots<p>`
+    let text:string = `<p>I found today's Ozludle in ${nb + 1} shots</p>`
     text += "\n"
   
     curr.forEach((arr:string[]) => {
-      text += "<p>";
+      text += "<a>";
       arr.forEach((color:string) => {
         if (color == "red") {
           text += "🟥"
@@ -140,7 +140,7 @@ function doWin(nb: number) {
           text += "⬇️"
         }
       })
-      text + "</p>\n"
+      text + "</a>\n"
     })
   
     div.innerHTML = text;
