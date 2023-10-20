@@ -56,4 +56,16 @@ export const lines: Line[] = [
         audio : "controlward.mp3",
         video : 1003.2
     },
+    {
+        id : 9,
+        text : "Seraphine's getting sucked off",
+        audio : "seraphinesuck.mp3",
+        video : 994
+    },
+    {
+        id : 10,
+        text : "Sometimes the life of a content creator is like cock and ball torture, but without the cock and ball",
+        audio : "cockandball.mp3",
+        video : 1003.1
+    },
 ]
