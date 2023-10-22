@@ -68,4 +68,10 @@ export const lines: Line[] = [
         audio : "cockandball.mp3",
         video : 1003.1
     },
+    {
+        id : 11,
+        text : "It never wasn't morbin' time",
+        audio : "morbingtime.mp3",
+        video : 992
+    },
 ]
